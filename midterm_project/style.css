@@ -1,0 +1,43 @@
+.card {
+  min-height: 100%;
+  text-align:center;
+  font-size: 15pt;
+  padding-top: 12px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  color: white;
+  background-color:#154360;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: grid;
+  text-decoration: none;
+  position: relative;
+  transition: all .1s ease-in;
+  height: 40px;
+  width: 450px;
+}
+
+.card:hover {
+  background-color: #85C1E9;
+  top: -2px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.button{
+  width: 60px;
+  height: 60px;
+  font-size:15pt;
+}
+
+/* I got help from https://www.w3schools.com/howto/howto_css_three_columns.asp */
+.col{
+  float:left;
+  width:33.3%;
+}
+
+.t_main:after{
+  content: "";
+  display: table;
+  clear:both;
+}
+/* I got help from https://www.w3schools.com/howto/howto_css_three_columns.asp */

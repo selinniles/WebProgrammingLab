@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="atm.js" type="text/JavaScript"></script>
+  </head>
+  <body style="background-color:#E5F5FF;">
+    <div class="accnumber" style="text-align:center" id="acc_number">
+      <h1 style="color:#3498DB;font-size:40pt">SKKU ATM</h1>
+      <h4 style="font-size:15pt">Enter your 16 digit account number or insert your card below:</h4>
+      <input type="password" placeholder="Enter Account Number" id="acc" style="height:30px; width:300px; font-size:20pt; text-align:center">
+      <table style="margin:auto;padding-top:15px">
+         <tr>
+            <td><input type="button" class = "button" value="1" onclick="dis('acc','1')"> </td>
+            <td><input type="button"  class = "button" value="2" onclick="dis('acc','2')"> </td>
+            <td><input type="button"  class = "button" value="3" onclick="dis('acc','3')"> </td>
+         </tr>
+         <tr>
+            <td><input type="button"  class = "button" value="4" onclick="dis('acc','4')"> </td>
+            <td><input type="button"  class = "button" value="5" onclick="dis('acc','5')"> </td>
+            <td><input type="button"  class = "button" value="6" onclick="dis('acc','6')"> </td>
+         </tr>
+         <tr>
+            <td><input type="button"  class = "button" value="7" onclick="dis('acc','7')"> </td>
+            <td><input type="button"  class = "button" value="8" onclick="dis('acc','8')"> </td>
+            <td><input type="button"  class = "button" value="9" onclick="dis('acc','9')"> </td>
+         </tr>
+         <tr>
+           <td><input type="button"  style= "font-size:12pt;color:green" class = "button" value="Enter" onclick="enter_account('acc')" > </td>
+           <td><input type="button"  class = "button" value="0" onclick="dis('acc','0')"> </td>
+           <td><input type="button"  style= "font-size:12pt;color:red" class = "button" value="Delete" onclick="dlt('acc')"> </td>
+         </tr>
+      </table>
+    </div>
+    <div class="pin" style="text-align:center;display:none" id="pin_main">
+      <h4 style="font-size:15pt">Please enter your PIN</h4>
+      <input type="password" placeholder="Enter PIN" id="pin" style="height:30px; width:200px; font-size:20pt; text-align:center">
+      <table style="margin:auto;padding-top:15px">
+         <tr >
+            <td><input type="button" class = "button" value="1" onclick="dis('pin','1')"> </td>
+            <td><input type="button"  class = "button" value="2" onclick="dis('pin','2')"> </td>
+            <td><input type="button"  class = "button" value="3" onclick="dis('pin','3')"> </td>
+         </tr>
+         <tr>
+            <td><input type="button"  class = "button" value="4" onclick="dis('pin','4')"> </td>
+            <td><input type="button"  class = "button" value="5" onclick="dis('pin','5')"> </td>
+            <td><input type="button"  class = "button" value="6" onclick="dis('pin','6')"> </td>
+         </tr>
+         <tr>
+            <td><input type="button"  class = "button" value="7" onclick="dis('pin','7')"> </td>
+            <td><input type="button"  class = "button" value="8" onclick="dis('pin','8')"> </td>
+            <td><input type="button"  class = "button" value="9" onclick="dis('pin','9')"> </td>
+         </tr>
+         <tr>
+           <td><input type="button"  style= "font-size:12pt;color:green" class = "button" value="Enter" onclick="enter_pin('pin')" > </td>
+           <td><input type="button"  class = "button" value="0" onclick="dis('pin','0')"> </td>
+           <td><input type="button"  style= "font-size:12pt;color:red" class = "button" value="Delete" onclick="dlt('pin')"> </td>
+         </tr>
+      </table>
+      <div class="" style="padding-left:400px;padding-top:50px">
+        <input type="button" style="color:white;background-color:red;border-color:red;border-radius: 5px; width:120px;font-size:12pt;height:40px"  name="" value="Return Card" onclick="new_page('pin_main','acc_number')">
+      </div>
+
+    </div>
+    <div class="welcome"style="text-align:center;display:none" id="welcome">
+      <table style="margin:auto">
+        <tr>
+          <td><h1 style="color:#3498DB">WELCOME TO SKKU BANK</h1>
+          <a href="#" class="card" style=""> <div class="" style="" onclick="new_page('welcome','acc_info')">Account Information</div></a><br>
+          <a href="#" class="card" style=""> <div class="" style="" onclick="new_page('welcome','w_main')">Withdraw Funds</div></a><br>
+          <a href="#" class="card" style=""> <div class="" style="" onclick="new_page('welcome','deposit_main')">Deposit Funds</div></a><br>
+          <a href="#" class="card" style=""> <div class="" style="" onclick="new_page('welcome','t_main')">Transfer</div></a><br></td>
+        </tr>
+      </table>
+      <div class="" style="padding-left:400px">
+        <input type="button" style="color:white;background-color:red;border:red;border-radius:5px;width:120px;font-size:12pt;height:40px"  name="" value="Return Card" onclick="new_page('welcome','acc_number')">
+      </div>
+    </div>
+
+    <div class="acc_info" id="acc_info" style="text-align:center;display:none">
+      <h1 style="color:#3498DB;font-size:25pt">Account Information</h1>
+      <h2>Current Balance: $<span id="current_balance" ></span> </h2>
+      <div class="" style="border:1px solid black">
+        <table rules=none style="width:100%" id="my_table" style="background-color:white;margin:auto">
+          <tr style="background-color:white">
+            <td style="padding-left:10px"><h3>Date</h3></td>
+            <td style="padding-left:600px"><h3>Funds Out</h3></td>
+            <td style="padding-right:50px"><h3>Funds In</h3> </td>
+            <td ><h3>Running Balance</h3> </td>
+          </tr>
+          <tr class="actions"style="background-color:#D3DBE0">
+            <td id="time_s" style="padding-left:10px"></td>
+            <td id="fundout" style="padding-left:600px">0</td>
+            <td id="fundin" style="padding-right:50px">0</td>
+            <td id="total"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="" style="padding-top:20px">
+        <input type="button" style="color:white;background-color:red;width:120px;font-size:12pt;height:40px;border-radius:5px;border-color:red"  name="" value="Back" onclick="new_page('acc_info','welcome')">
+      </div>
+
+
+    </div>
+    <div class="withdraw" style="display:none" id="w_main">
+      <table>
+        <tr>
+          <td>Quick Links</td>
+          <td></td>
+          <td style="padding-left:600px">Quick Links</td>
+        </tr>
+        <tr>
+          <td><a href="#" class="card" style="width:80px" value="20" onclick="withdraw_quick('20')"> <div class="" style="">20</div></a></td>
+          <!-- I got help from https://www.youtube.com/watch?v=y4RJDUI7M8Y&ab_channel=SharpProgramming for this part and other same functionalities-->
+          <td style="padding-left:600px"> <img src="assets/uparrow100copy.png" style="width:100px;" onclick="withdraw('w_inp','100')" onmouseover="this.src='assets/uparrow100copyhover.png'" onmouseout="this.src='assets/uparrow100copy.png'" alt=""></td>
+          <!-- I got help from https://www.youtube.com/watch?v=y4RJDUI7M8Y&ab_channel=SharpProgramming for this part and other same functionalities-->
+          <td style="padding-left:600px"><a href="#" class="card" style="width:80px"value="100" onclick="withdraw_quick('100')"> <div class="" style="">100</div></a></td>
+        </tr>
+        <tr>
+          <td><a href="#" class="card" style="width:80px"value="40" onclick="withdraw_quick('40')"> <div class="" style="">40</div></a></td>
+          <td style="padding-left:600px"><img src="assets/uparrow20copy.png" style="width:100px;" onclick="withdraw('w_inp','20')" onmouseover="this.src='assets/uparrow20copyhover.png'" onmouseout="this.src='assets/uparrow20copy.png'" alt=""></td>
+          <td style="padding-left:600px"><a href="#" class="card" style="width:80px"value="200" onclick="withdraw_quick('200')"> <div class="" style="">200</div></a></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="padding-left:600px"><input type="text" name="" id="w_inp" value="0" style="width:80px;height:30px"></td>
+          <td style="padding-left:100px"><a href="#" class="card" style="width:80px;background-color:green" onclick="show_withdraw('w_money')"> <div class="" style="">Enter</div></a></td>
+        </tr>
+        <tr>
+          <td><a href="#" class="card" style="width:80px"value="60" onclick="withdraw_quick('60')"> <div class="" style="">60</div></a></td>
+          <td style="padding-left:600px"><img src="assets/downarrow20copy.png" style="width:100px;" onclick="withdraw('w_inp','-20')" onmouseover="this.src='assets/downarrow20copyhover.png'" onmouseout="this.src='assets/downarrow20copy.png'" alt=""></td>
+          <td style="padding-left:600px"><a href="#" class="card" style="width:80px"value="300" onclick="withdraw_quick('300')"> <div class="" style="">300</div></a></td>
+        </tr>
+        <tr>
+          <td><a href="#" class="card" style="width:80px"value="80" onclick="withdraw_quick('80')"> <div class="" style="">80</div></a></td>
+          <td style="padding-left:600px"><img src="assets/downarrow100copy.png" style="width:100px;" onclick="withdraw('w_inp','-100')" onmouseover="this.src='assets/downarrow100copyhover.png'" onmouseout="this.src='assets/downarrow100copy.png'" alt=""></td>
+          <td style="padding-left:600px"><a href="#" class="card" style="width:80px;background-color:red;border-color:red"> <div class="" onclick="new_page('w_main','welcome')" style="">Back</div></a></td>
+        </tr>
+      </table>
+    </div>
+    <div class="withdraw_info" style="text-align:center;display:none" id="check">
+      <h1 style="color:#3498DB">WITHDRAW</h1>
+      <h2 value="">$<span id="w_money"></span>?</h2>
+      <div class="">
+        <input type="button" style="color:white;background-color:green;width:80px;font-size:12pt;height:40px;border-radius:5px;border-color:green"  name="" value="YES" onclick="new_page('check','succes'); success('fundout','w_money');">
+        &nbsp&nbsp
+        <input type="button" style="color:white;background-color:red;width:80px;font-size:12pt;height:40px;border-radius:5px;border-color:red"  name="" value="NO" onclick="no('check','w_main','w_inp')">
+      </div>
+    </div>
+    <div class="withdraw_succes" style="text-align:center;display:none" id="succes">
+      <h2>Money has been withdrawn</h2>
+      <img src="assets/checkmark.png" alt="">
+      <table style="margin:auto">
+        <tr>
+          <td>
+            <input type="button" style="color:white;background-color:#154360;width:100px;font-size:12pt;height:40px;border-radius:5px;border-color:black"  name="" value="Home" onclick="new_page('succes','welcome')">
+          </td>
+          <td style="padding-right:10px;padding-left:10px"><input type="button" style="color:white;background-color:#154360;width:250px;font-size:12pt;height:40px;border-radius:5px;border-color:black" onclick="new_page('succes','w_main')" name="" value="Perform Another Withdraw">
+          </td>
+          <td><input type="button" style="color:white;background-color:red;width:120px;font-size:12pt;height:40px;border-radius:5px;border-color:red" onclick="new_page('succes','acc_number')" name="" value="Return Card"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="deposit" style="text-align:center;display:none" id="deposit_main">
+      <h2>Enter the amount to deposit</h2>
+      <input type="text" placeholder="$0000.00" id="deposit" style="height:30px; width:200px; font-size:20pt; text-align:center">
+      <table style="margin:auto">
+         <tr >
+            <td><input type="button" class = "button" value="1" onclick="dis('deposit','1')"> </td>
+            <td><input type="button"  class = "button" value="2" onclick="dis('deposit','2')"> </td>
+            <td><input type="button"  class = "button" value="3" onclick="dis('deposit','3')"> </td>
+         </tr>
+         <tr>
+            <td><input type="button"  class = "button" value="4" onclick="dis('deposit','4')"> </td>
+            <td><input type="button"  class = "button" value="5" onclick="dis('deposit','5')"> </td>
+            <td><input type="button"  class = "button" value="6" onclick="dis('deposit','6')"> </td>
+         </tr>
+         <tr>
+            <td><input type="button"  class = "button" value="7" onclick="dis('deposit','7')"> </td>
+            <td><input type="button"  class = "button" value="8" onclick="dis('deposit','8')"> </td>
+            <td><input type="button"  class = "button" value="9" onclick="dis('deposit','9')"> </td>
+         </tr>
+         <tr>
+           <td><input type="button"  class = "button" value="0" onclick="dis('deposit','0')"> </td>
+           <td><input type="button"  class = "button" value="." onclick="dis('deposit','.')"> </td>
+           <td><input type="button"  style= "font-size:20pt;color:red" class = "button" value="Del" onclick="dlt('deposit')"> </td>
+         </tr>
+      </table>
+      <input type="button"  style= "font-size:15pt;color:green;width:190px" class = "button" value="Enter" onclick="show_deposit('deposit','d_info')">
+      <div class="" style="padding-left:600px;padding-top:100px">
+        <input type="button" style="color:white;background-color:red;width:120px;font-size:12pt;height:40px;border-radius:5px;border-color:red"  name="" value="Back" onclick="new_page('deposit_main','welcome')">
+      </div>
+    </div>
+    <div class="deposit_info" style="text-align:center;display:none" id="dinfo">
+      <h2 style="color:#3498DB">Are you sure you want to deposit the amount specified?</h2>
+      <h2 value=""><span id="d_info"></span>?</h2>
+      <div class="">
+        <input type="button" style="color:white;background-color:green;width:80px;font-size:12pt;height:40px;border-radius:5px;border-color:green"  name="" value="YES" onclick="new_page('dinfo','enter_deposit'); success('fundin','d_info');">
+        &nbsp&nbsp
+        <input type="button" style="color:white;background-color:red;width:80px;font-size:12pt;height:40px;border-radius:5px;border-color:red"  name="" value="NO" onclick="new_page('dinfo','deposit_main')">
+      </div>
+    </div>
+    <div class="enter_deposit" style="text-align:center;display:none" id="enter_deposit">
+      <h2>Enter the specified amount of money into the ATM.</h2>
+      <div class="" style="padding-left:530px">
+        <a href="#" class="card" style=""> <div class="" style="" onclick="new_page('enter_deposit','deposit_succes')">OK</div></a>
+    </div>
+  </div>
+    <div class="deposit_succes" style="text-align:center;display:none" id="deposit_succes">
+      <h2>Money has been deposited.</h2>
+      <img src="assets/checkmark.png" alt="">
+      <table style="margin:auto">
+        <tr>
+          <td>
+            <input type="button" style="color:white;background-color:#154360;width:100px;font-size:12pt;height:40px;border-radius:5px;border-color:black"  name="" value="Home" onclick="new_page('deposit_succes','welcome')">
+          </td>
+          <td style="padding-right:10px;padding-left:10px"><input type="button" style="color:white;background-color:#154360;width:250px;font-size:12pt;height:40px;border-radius:5px;border-color:black"  name="" onclick="new_page('deposit_succes','deposit_main')" value="Deposit Again">
+          </td>
+          <td><input type="button" style="color:white;background-color:red;width:120px;font-size:12pt;height:40px;border-radius:5px;border-color:red"  name="" onclick="new_page('deposit_succes','acc_number')" value="Return Card"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="transfer_main" style="display:none;padding-left:200px;padding-top:50px" id="t_main">
+      <div class="col" style="">
+        <h2 style="color:#3498DB">FROM</h2>
+        <select class="" name="" style="border-radius:5px;width:150px;height:40px;text-align:center;background-color:#154360;color:white">
+          <option value="1234567890123456">1234567890123456</option>
+          <option value="acc" hidden selected>Choose an Account</option>
+        </select>
+      </div>
+      <div class="col">
+        <input type="text" placeholder="$0000.00" id="transfer" style="height:30px; width:200px; font-size:20pt;">
+          <table style="">
+           <tr >
+              <td><input type="button" class = "button" value="1" onclick="dis('transfer','1')"> </td>
+              <td><input type="button"  class = "button" value="2" onclick="dis('transfer','2')"> </td>
+              <td><input type="button"  class = "button" value="3" onclick="dis('transfer','3')"> </td>
+           </tr>
+           <tr>
+              <td><input type="button"  class = "button" value="4" onclick="dis('transfer','4')"> </td>
+              <td><input type="button"  class = "button" value="5" onclick="dis('transfer','5')"> </td>
+              <td><input type="button"  class = "button" value="6" onclick="dis('transfer','6')"> </td>
+           </tr>
+           <tr>
+              <td><input type="button"  class = "button" value="7" onclick="dis('transfer','7')"> </td>
+              <td><input type="button"  class = "button" value="8" onclick="dis('transfer','8')"> </td>
+              <td><input type="button"  class = "button" value="9" onclick="dis('transfer','9')"> </td>
+           </tr>
+           <tr>
+             <td><input type="button"  class = "button" value="0" onclick="dis('transfer','0')"> </td>
+             <td><input type="button"  class = "button" value="." onclick="dis('transfer','.')"> </td>
+             <td><input type="button"  style= "font-size:20pt;color:red" class = "button" value="Del" onclick="dlt('transfer')"> </td>
+           </tr>
+        </table>
+        <input type="button"  style= "font-size:15pt;color:green;width:190px" class = "button" value="Enter" onclick="show_transfer('transfer','t_info')"><br><br>
+        <div class="" style="padding-left:300px">
+          <input type="button" style="color:white;background-color:red;width:120px;font-size:12pt;height:40px;border-radius:5px;border-color:red"  name="" value="Back" onclick="new_page('t_main','welcome')">
+        </div>
+      </div>
+      <div class="col" style="">
+        <h2 style="color:#3498DB">TO</h2>
+        <select class="" name="" style="border-radius:5px;width:150px;height:40px;text-align:center;background-color:#154360;color:white">
+          <option value="1234567887654321">1234567887654321</option>
+          <option value="acc" hidden selected>Choose an Account</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="transfer_info" style="text-align:center;display:none"id="transfer_check">
+      <h1 style="color:#3498DB">Transfer?</h1>
+      <h2 value="">$<span id="t_info"></span><br>From 1234567890123456 <br> To 1234567887654321</h2>
+      <div class="">
+        <input type="button" style="color:white;background-color:green;width:80px;font-size:12pt;height:40px;border-radius:5px;border-color:green"  name="" value="YES" onclick="new_page('transfer_check','transfer_succes'); success('fundout','t_info');">
+        &nbsp&nbsp
+        <input type="button" style="color:white;background-color:red;width:80px;font-size:12pt;height:40px;border-radius:5px;border-color:red"  name="" value="NO" onclick="new_page('transfer_check','t_main')">
+      </div>
+    </div>
+    <div class="transfer_succes" style="text-align:center;display:none" id="transfer_succes">
+      <h2>Money has been transferred.</h2>
+      <img src="assets/checkmark.png" alt="">
+      <table style="margin:auto">
+        <tr>
+          <td>
+            <input type="button" style="color:white;background-color:#154360;width:100px;font-size:12pt;height:40px;border-radius:5px;border-color:black"  name="" value="Home" onclick="new_page('transfer_succes','welcome')">
+          </td>
+          <td style="padding-right:10px;padding-left:10px"><input type="button" style="color:white;background-color:#154360;width:250px;font-size:12pt;height:40px;border-radius:5px;border-color:black"  onclick="new_page('transfer_succes','t_main')" name="" value="Perform Another Transaction">
+          </td>
+          <td><input type="button" style="color:white;background-color:red;width:120px;font-size:12pt;height:40px;border-radius:5px;border-color:red"  name="" value="Return Card" onclick="new_page('transfer_succes','acc_number')"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

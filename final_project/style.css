@@ -1,0 +1,54 @@
+html {
+    position: relative;
+    height: 100%;
+    font-family: 'Times New Roman', serif;
+    font-size:10pt;
+}
+.input-icons i {
+            position: absolute;
+        }
+.input-icons {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+.register_page{
+  display: grid;
+  grid-template-rows: 60px auto;
+
+}
+
+.header{
+  background-color: #CFEEFF;
+}
+
+.card_main{
+  min-height: 100%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  text-decoration: none;
+  position: relative;
+  border:2px solid black;
+  border-radius:40px;
+  transition: all .1s ease-in;
+  height: 600px;
+  width: 900px;
+}
+
+.inp{
+  padding-left: 4px;
+  height:30px;
+  width:360px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.card_main:hover {
+  top: -2px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+.first_half{
+  background-color: #CFEEFF;
+  text-align: center;
+  border-radius:40px;
+}
